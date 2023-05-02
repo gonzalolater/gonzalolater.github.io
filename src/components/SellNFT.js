@@ -11,6 +11,26 @@ export default function SellNFT () {
     const [message, updateMessage] = useState('');
     const location = useLocation();
 
+    async function onChangeFile(e) {
+        var file = e.target.files[0];
+
+        try {
+            const response = await uploadFileToIPFS(file);
+            if(response.success === true){
+                console.log("Upload image to Pinata", response.pinataUrl)
+                setFileURL(response.pinataUrl);
+            }
+        } catch (e) {
+            console.log("Error during file upload", e)
+        }
+    }
+
+    // async function uploadMetadataToIPFS() {
+
+    // }
+
+    // async fuction listNft
+
     return (
         <div className="">
         <Navbar></Navbar>
