@@ -28,5 +28,7 @@ Functions in the smart contract NFTMarketplace.sol
 * getMyNFTs()         - get all the NFTs from the current user on the marketplace.
 * executeSale()       - the function that executes the sale on the marketplace.
 
+![image](https://user-images.githubusercontent.com/42863568/235653253-d4014c7d-2bc0-49c5-a102-fd7967269482.png)
+
 
 -------------------------------------------------------------------------------------------------------------
