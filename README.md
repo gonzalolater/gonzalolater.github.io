@@ -35,12 +35,12 @@ Functions in the smart contract NFTMarketplace.sol
 
 2. Work on components
 
-Marketplace.js
-Navbar.js
-NFTpage.js
-NFTTile.js
-Profile.js
-SellNFT.js
+* Marketplace.js
+* Navbar.js
+* NFTpage.js
+* NFTTile.js
+* Profile.js
+* SellNFT.js
 
 -------------------------------------------------------------------------------------------------------------
 
