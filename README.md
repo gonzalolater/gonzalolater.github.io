@@ -32,3 +32,17 @@ Functions in the smart contract NFTMarketplace.sol
 
 
 -------------------------------------------------------------------------------------------------------------
+
+2. Work on components
+
+Marketplace.js
+Navbar.js
+NFTpage.js
+NFTTile.js
+Profile.js
+SellNFT.js
+
+-------------------------------------------------------------------------------------------------------------
+
+3. Tomorrow
+Make test and work on better fuctions of bottons and interactions on IFPS and Alchemy SDK conenctions, .env .
