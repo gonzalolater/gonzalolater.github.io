@@ -49,12 +49,12 @@ Make test and work on better fuctions of bottons and interactions on IFPS and Al
 
 Errores a solucionar y posibles soluciones:
 
-GetIpfsUrlFromPinata : de donde sale ?
-updateDataFetched : NTFpage.js linea 40
-deploy.js : de donde sale el Process linea 25
-testing.js importar ethers
-navbar.js : Se abre 3 veces, use effects sin array de dependecias, cambiar por un array vacio.
-Boton connect wallets
+* GetIpfsUrlFromPinata : de donde sale ?
+* updateDataFetched : NTFpage.js linea 40
+* deploy.js : de donde sale el Process linea 25
+* testing.js importar ethers
+* navbar.js : Se abre 3 veces, use effects sin array de dependecias, cambiar por un array vacio.
+* Boton connect wallets
 -------------------------------------------------
 
 if(!dataFetched) getAllNFTs()
