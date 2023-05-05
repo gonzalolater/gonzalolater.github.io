@@ -60,4 +60,12 @@ Errores a solucionar y posibles soluciones:
 4. Solved Problems and continiu with integrations.
 
 * SellNFT.js
-* 
+* Navbar.js
+* Marketplace.js
+* NFTpage.js
+
+![image](https://user-images.githubusercontent.com/42863568/236356382-cdca43fc-3c18-4eb5-a740-5c21972f4cae.png)
+
+![image](https://user-images.githubusercontent.com/42863568/236356537-ea83f0bb-da49-42fd-bd04-ebe28e112ac1.png)
+
+# Finish Challenge !
