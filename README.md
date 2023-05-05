@@ -56,7 +56,7 @@ Errors to fix and possible solutions:
 * Connect wallets button
 -------------------------------------------------------------------------------------------------------------
 
-4. Solved Problems and continiu with integrations.
+4. Fix the issues and continue with the integrations.
 
 * SellNFT.js
 * Navbar.js
