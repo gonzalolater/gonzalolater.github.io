@@ -39,7 +39,7 @@ async function connectWebsite() {
     const chainId = await window.ethereum.request({ method: 'eth_chainId' });
     if(chainId !== '0x5')
     {
-      //alert('Incorrect network! Switch your metamask network to Rinkeby');
+      //alert('Incorrect network! Switch your metamask network to GoerliETH');
       await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
         params: [{ chainId: '0x5' }],
@@ -71,6 +71,7 @@ async function connectWebsite() {
     })
   });
 
+// -----------------------------------------------------------------------------------------------------------------
 
     return (
       <div className="">
@@ -114,7 +115,7 @@ async function connectWebsite() {
               </li>              
               }  
               <li>
-                <button className="enableEthereumButton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">{connected? "Connected":"Connect Wallet"}</button>
+                <button className="enableEthereumButton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm"onClick={connectWebsite} >{connected? "Connected":"Connect Wallet"}</button>
               </li>
             </ul>
           </li>

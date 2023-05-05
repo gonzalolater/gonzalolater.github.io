@@ -36,7 +36,6 @@ const sampleData = [
 ];
 
 const [data, updateData] = useState(sampleData);
-
 const [dataFetched, updateFetched] = useState(false);
 
 async function getAllNFTs() {
@@ -75,6 +74,8 @@ async function getAllNFTs() {
 
 if(!dataFetched)
     getAllNFTs();
+
+// -----------------------------------------------------------------------------------------------------------------------------------
 
 return (
     <div>

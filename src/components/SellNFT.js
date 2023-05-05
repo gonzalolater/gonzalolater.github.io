@@ -29,6 +29,7 @@ export default function SellNFT () {
     async function OnChangeFile(e) {
         var file = e.target.files[0];
         //check for file extension
+        
         try {
             //upload the file to IPFS
             disableButton();
@@ -104,11 +105,14 @@ export default function SellNFT () {
             updateMessage("");
             updateFormParams({ name: '', description: '', price: ''});
             window.location.replace("/")
+        
         }
         catch(e) {
-            alert( "Upload error"+e )
+            alert( "Upload error: "+e )
         }
     }
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------    
 
     return (
         <div className="">
@@ -130,11 +134,11 @@ export default function SellNFT () {
                 </div>
                 <div>
                     <label className="block text-purple-500 text-sm font-bold mb-2" htmlFor="image">Upload Image</label>
-                    <input type={"file"} onChange={""}></input>
+                    <input type={"file"} onChange={OnChangeFile}></input>
                 </div>
                 <br></br>
                 <div className="text-green text-center">{message}</div>
-                <button onClick={""} className="font-bold mt-10 w-full bg-purple-500 text-white rounded p-2 shadow-lg">
+                <button onClick={listNFT} className="font-bold mt-10 w-full bg-purple-500 text-white rounded p-2 shadow-lg">
                     List NFT
                 </button>
             </form>

@@ -73,6 +73,7 @@ async function buyNFT(tokenId) {
     if(typeof data.image == "string")
         data.image = GetIpfsUrlFromPinata(data.image);
 
+// --------------------------------------------------------------------------------------------------
 
     return(
         <div style={{"min-height":"100vh"}}>
