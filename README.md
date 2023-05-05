@@ -65,13 +65,21 @@ Errores a solucionar y posibles soluciones:
 * NFTpage.js
 
 -------------------------------------------------------------------------------------------------------------
+# Github Desktop
+![image](https://user-images.githubusercontent.com/42863568/236356959-f7cf6de8-1266-4706-bf26-92479c0d15d4.png)
+
+
+-------------------------------------------------------------------------------------------------------------
 # MetaMask Transaccions
 ![image](https://user-images.githubusercontent.com/42863568/236356772-cd9a511c-c93b-4e7a-923a-75cbabc23cc3.png)
 
 -------------------------------------------------------------------------------------------------------------
+# Test
 
 ![image](https://user-images.githubusercontent.com/42863568/236356382-cdca43fc-3c18-4eb5-a740-5c21972f4cae.png)
 
 ![image](https://user-images.githubusercontent.com/42863568/236356537-ea83f0bb-da49-42fd-bd04-ebe28e112ac1.png)
+
+-------------------------------------------------------------------------------------------------------------
 
 # Finish Challenge !
