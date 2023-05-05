@@ -44,17 +44,16 @@ Functions in the smart contract NFTMarketplace.sol
 
 -------------------------------------------------------------------------------------------------------------
 
-3. Tomorrow
-Make test and work on better fuctions of bottons and interactions on IFPS and Alchemy SDK conenctions, .env .
+3. Make test and work on better fuctions of bottons and interactions on IFPS and Alchemy SDK conenctions, .env .
 
-Errores a solucionar y posibles soluciones:
+Errors to fix and possible solutions:
 
-* GetIpfsUrlFromPinata : de donde sale ?
-* updateDataFetched : NTFpage.js linea 40
-* deploy.js : de donde sale el Process linea 25
-* testing.js importar ethers
-* navbar.js : Se abre 3 veces, use effects sin array de dependecias, cambiar por un array vacio.
-* Boton connect wallets
+* GetIpfsUrlFromPinata: where does it come from?
+* updateDataFetched : NTFpage.js line 40
+* deploy.js : where the Process line 25 comes from
+* testing.js import ethers
+* navbar.js : Opens 3 times, use effects without dependency array, change to empty array.
+* Connect wallets button
 -------------------------------------------------------------------------------------------------------------
 
 4. Solved Problems and continiu with integrations.
