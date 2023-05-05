@@ -55,7 +55,7 @@ Errores a solucionar y posibles soluciones:
 * testing.js importar ethers
 * navbar.js : Se abre 3 veces, use effects sin array de dependecias, cambiar por un array vacio.
 * Boton connect wallets
--------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
 
 4. Solved Problems and continiu with integrations.
 
@@ -63,6 +63,12 @@ Errores a solucionar y posibles soluciones:
 * Navbar.js
 * Marketplace.js
 * NFTpage.js
+
+-------------------------------------------------------------------------------------------------------------
+# MetaMask Transaccions
+![image](https://user-images.githubusercontent.com/42863568/236356772-cd9a511c-c93b-4e7a-923a-75cbabc23cc3.png)
+
+-------------------------------------------------------------------------------------------------------------
 
 ![image](https://user-images.githubusercontent.com/42863568/236356382-cdca43fc-3c18-4eb5-a740-5c21972f4cae.png)
 
