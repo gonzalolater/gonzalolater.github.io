@@ -2,28 +2,16 @@ import Navbar from "./Navbar";
 import { useState } from "react";
 import { uploadFileToIPFS, uploadJSONToIPFS } from "../pinata";
 import Marketplace from '../Marketplace.json';
-import { useLocation } from "react-router";
+import { useNavigate } from "react-router";
 
 export default function SellNFT () {
     const [formParams, updateFormParams] = useState({ name: '', description: '', price: ''});
     const [fileURL, setFileURL] = useState(null);
     const ethers = require("ethers");
     const [message, updateMessage] = useState('');
-    const location = useLocation();
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
-    async function disableButton() {
-        const listButton = document.getElementById("list-button")
-        listButton.disabled = true
-        listButton.style.backgroundColor = "grey";
-        listButton.style.opacity = 0.3;
-    }
-    
-    async function enableButton() {
-        const listButton = document.getElementById("list-button")
-        listButton.disabled = false
-        listButton.style.backgroundColor = "#A500FF";
-        listButton.style.opacity = 1;
-    }
     
     //This function uploads the NFT image to IPFS
     async function OnChangeFile(e) {
@@ -32,11 +20,11 @@ export default function SellNFT () {
         
         try {
             //upload the file to IPFS
-            disableButton();
+            setLoading(true)
             updateMessage("Uploading image.. please dont click anything!")
             const response = await uploadFileToIPFS(file);
             if(response.success === true) {
-                enableButton();
+                setLoading(false)
                 updateMessage("")
                 console.log("Uploaded image to Pinata: ", response.pinataURL)
                 setFileURL(response.pinataURL);
@@ -85,7 +73,7 @@ export default function SellNFT () {
             //After adding your Hardhat network to your metamask, this code will get providers and signers
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
-            disableButton();
+            setLoading(true);
             updateMessage("Uploading NFT(takes 5 mins).. please dont click anything!")
     
             //Pull the deployed contract instance
@@ -101,11 +89,10 @@ export default function SellNFT () {
             await transaction.wait()
     
             alert("Successfully listed your NFT!");
-            enableButton();
+            setLoading(false);
             updateMessage("");
             updateFormParams({ name: '', description: '', price: ''});
-            window.location.replace("/")
-        
+            navigate('/')        
         }
         catch(e) {
             alert( "Upload error: "+e )
@@ -138,7 +125,9 @@ export default function SellNFT () {
                 </div>
                 <br></br>
                 <div className="text-green text-center">{message}</div>
-                <button onClick={listNFT} className="font-bold mt-10 w-full bg-purple-500 text-white rounded p-2 shadow-lg">
+                <button disabled={loading} 
+                    onClick={listNFT} 
+                    className={`${loading? 'bg-gray-300 opacity-40' : 'bg-[#A500FF] opacity-100'} transition-all ease-in-out duration-300 hover:scale-105 font-bold mt-10 w-full bg-purple-500 text-white rounded p-2 shadow-lg`}>
                     List NFT
                 </button>
             </form>

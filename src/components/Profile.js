@@ -1,8 +1,8 @@
 import Navbar from "./Navbar";
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import MarketplaceJSON from "../Marketplace.json";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NFTTile from "./NFTTile";
 
 export default function Profile () {
@@ -58,8 +58,10 @@ export default function Profile () {
 
     const params = useParams();
     const tokenId = params.tokenId;
+    useEffect(()=>{
     if(!dataFetched)
         getNFTData(tokenId);
+    },[])
 
     return (
         <div className="profileClass" style={{"min-height":"100vh"}}>

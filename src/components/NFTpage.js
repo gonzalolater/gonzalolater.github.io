@@ -1,77 +1,80 @@
 import Navbar from "./Navbar";
-import axie from "../tile.jpeg";
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import MarketplaceJSON from "../Marketplace.json";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { ethers, BigNumber } from "ethers";
+import { GetIpfsUrlFromPinata } from "../pinata";
 
 export default function NFTPage (props) {
 
 const [data, updateData] = useState({});
 const [message, updateMessage] = useState("");
 const [currAddress, updateCurrAddress] = useState("0x");
+const [dataFetched, updateDataFetched] = useState(false);
 
 async function getNFTData(tokenId) {
-    const ethers = require("ethers");
     //After adding your Hardhat network to your metamask, this code will get providers and signers
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const addr = await signer.getAddress();
     //Pull the deployed contract instance
-    let contract = new ethers.Contract(MarketplaceJSON.address, MarketplaceJSON.abi, signer)
+    const contract = new ethers.Contract(MarketplaceJSON.address, MarketplaceJSON.abi, signer)
     //create an NFT Token
-    var tokenURI = await contract.tokenURI(tokenId);
-    const listedToken = await contract.getListedTokenForId(tokenId);
-    tokenURI = GetIpfsUrlFromPinata(tokenURI);
-    let meta = await axios.get(tokenURI);
-    meta = meta.data;
-    console.log(listedToken);
-
-    let item = {
-        price: meta.price,
+    const tokenURI = await contract.tokenURI(tokenId);
+    const listedToken = await contract.getListedForTokenId(tokenId)
+    console.log("listedToken", listedToken);
+    console.log("tokenURI", tokenURI)
+    const meta = await axios.get(tokenURI);
+    const {price, image, name, description} = meta.data
+    const item = {
+        price,
         tokenId: tokenId,
+        tokenBigNumber: listedToken.tokenId,
         seller: listedToken.seller,
         owner: listedToken.owner,
-        image: meta.image,
-        name: meta.name,
-        description: meta.description,
+        bigIntPrice: listedToken.price,
+        image,
+        name,
+        description
     }
-    console.log(item);
     updateData(item);
     updateDataFetched(true);
-    console.log("address", addr)
     updateCurrAddress(addr);
 }
 
 async function buyNFT(tokenId) {
     try {
-        const ethers = require("ethers");
         //After adding your Hardhat network to your metamask, this code will get providers and signers
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
 
         //Pull the deployed contract instance
-        let contract = new ethers.Contract(MarketplaceJSON.address, MarketplaceJSON.abi, signer);
-        const salePrice = ethers.utils.parseUnits(data.price, 'ether')
+        const contract = new ethers.Contract(MarketplaceJSON.address, MarketplaceJSON.abi, signer);
+        console.log(contract.estimateGas.executeSale(data.tokenBigNumber))
         updateMessage("Buying the NFT... Please Wait (Upto 5 mins)")
         //run the executeSale function
-        let transaction = await contract.executeSale(tokenId, {value:salePrice});
+        const transaction = await contract.executeSale(data.tokenBigNumber._hex);
+
         await transaction.wait();
 
         alert('You successfully bought the NFT!');
         updateMessage("");
     }
     catch(e) {
+        console.log(e)
         alert("Upload Error"+e)
     }
 }
 
     const params = useParams();
     const tokenId = params.tokenId;
+    useEffect(() => {
     if(!dataFetched)
         getNFTData(tokenId);
     if(typeof data.image == "string")
         data.image = GetIpfsUrlFromPinata(data.image);
+    }, [tokenId]);
 
 // --------------------------------------------------------------------------------------------------
 
@@ -99,7 +102,7 @@ async function buyNFT(tokenId) {
                     <div>
                     { currAddress == data.owner || currAddress == data.seller ?
                         <div className="text-emerald-700">You are the owner of this NFT</div>
-                        : <button className="enableEthereumButton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">Buy this NFT</button>
+                        : <button onClick={buyNFT} className="enableEthereumButton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">Buy this NFT</button>
                     }
                     
                     <div className="text-green text-center mt-3">{message}</div>
