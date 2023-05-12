@@ -5,6 +5,12 @@ const secret = process.env.REACT_APP_PINATA_SECRET;
 const axios = require('axios');
 const FormData = require('form-data');
 
+export const GetIpfsUrlFromPinata = (url) => {
+    const pinataUrl = "https://gateway.pinata.cloud/ipfs/";
+    const ipfsUrl = "ipfs://";
+    return url.replace(pinataUrl, ipfsUrl);
+}
+
 export const uploadJSONToIPFS = async(JSONBody) => {
     const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
     //making axios POST request to Pinata ⬇️
