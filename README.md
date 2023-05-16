@@ -1,9 +1,4 @@
 # Basic NFT Marketplace end to end
-
-# Challenge-Loty.io
-* Building a MarketPlace 
-Here is the technical exercise. This challenger, let me know if you have any questions, you can also add me by WhatsApp without problem +1 111 111 1111:
-
 # Build an NFTS marketplace
 
 * The objective of this project is to create a marketplace that allows users to buy, sell NFTs as well as view their own NFTs using blockchain technology. The application must be built using Next.js and integrate with a smart contract deployed on the Base test network.
