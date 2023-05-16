@@ -1,4 +1,4 @@
-// require('dotenv').config()  
+require('dotenv').config()  
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-ethers");
 const fs = require('fs');
